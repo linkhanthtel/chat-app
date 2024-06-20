@@ -15,8 +15,10 @@ function App() {
 
   if (!isAuth) {
     return (
-      <div className="flex justify-center">
-      <SignIn setIsAuth={setIsAuth} />
+      <div className="h-screen bg-gradient-to-r from-cyan-500 to-blue-600 flex justify-center items-center">
+        <div className="flex justify-center">
+          <SignIn setIsAuth={setIsAuth} />
+        </div>
       </div>
     );
   }
@@ -29,21 +31,21 @@ function App() {
   }
 
   return (
-  <div className="flex flex-col justify-center items-center self-center">
+  <div className="h-screen bg-gradient-to-r from-cyan-500 to-blue-500 flex flex-col justify-center items-center self-center">
     {room ? (
-      <div>
+      <div className="h-screen w-screen">
         <ChatApp room={room} />
       </div>
     ) : (
-      <div className="flex flex-col border border-slate-900 justify-center items-center">
-        <p className="p-2 text-slate-900 text-3xl">Enter room number</p><br />
-        <input className="p-2 border border-slate-900 rounded-xl" ref={inputRoomRef} /><br />
-        <button className="p-2 my-3 border rounded-lg text-slate-900 bg-white border-slate-900 hover:bg-slate-900 hover:text-white" onClick={() => setRoom(inputRoomRef.current.value)}>Submit</button>
+      <div className="px-10 py-20 flex flex-col border border-white rounded-lg shadow-2xl justify-center items-center self-center">
+        <p className="p-2 text-white text-3xl">Enter room number</p><br />
+        <input className="p-2 border border-gray-400 rounded-xl" ref={inputRoomRef} /><br />
+        <button className="px-3 py-4 my-3 border rounded-2xl shadow-xl text-slate-900 bg-white border-gray-400 hover:bg-blue-700 hover:text-white" onClick={() => setRoom(inputRoomRef.current.value)}>Submit</button>
+        <div className="my-5 flex justify-center">
+          <button className="p-3 my-5 rounded-2xl bg-red-600 text-white hover:bg-red-700" onClick={signUserOut}>Sign Out</button>
+        </div>
       </div>
     )}
-    <div className="my-5 flex justify-center">
-      <button className="p-3 bg-red-500 text-white" onClick={signUserOut}>Sign Out</button>
-    </div>
   </div>
   );
 }

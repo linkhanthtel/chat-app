@@ -38,22 +38,26 @@ function ChatApp(props) {
     setMessage("");
   };
 
+  
+
   return (
     <div>
-      <div className='w-screen h-full border border-slate-900'>
-        <p className='p-2 bg-slate-900 text-white text-3xl mb-7 text-center'>Welcome to Room: {room}</p>
+      <div className='w-screen border border-slate-900'>
+        <p className='p-4 bg-gradient-to-r from-green-400 to-cyan-500 text-white text-3xl text-center'>Welcome to Room: {room}</p>
+        <div className='bg-white px-2 w-screen'>
         {sms.map(message => (
-          <div className='text-start'>
-            <div className='pb-3 flex flex-row'>
-              <p className='pr-2'>{message.user} : </p>
-              <p className='pr-2'>{message.text}</p>
+          <div className='text-start md:py-3'>
+            <div className='pb-3 md:flex md:flex-row'>
+              <p className='pr-2 text-wrap'>{message.user} : </p>
+              <p className='pr-2 text-wrap'>{message.text}</p>
             </div>
           </div>
         ))}
+        </div>
       </div>
-      <form className='flex justify-between border border-slate-900'>
-        <input className='py-3 w-full ' type="text" placeholder='Enter your message...' value={message} onChange={e => setMessage(e.target.value)} />
-        <button className='px-3 py-2 bg-slate-900 text-white' type='submit' onClick={handleSubmit }>Submit</button>
+      <form className='px-2 py-2 bg-blue-800 flex justify-around'>
+        <input className='py-3 w-full bg-white' type="text" placeholder='Enter your message...' value={message} onChange={e => setMessage(e.target.value)} />
+        <button className='mx-3 px-3 py-2 bg-green-600 rounded-xl text-white' type='submit' onClick={handleSubmit }>Send</button>
       </form>
     </div>
   )
